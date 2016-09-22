@@ -2,7 +2,7 @@
 % This script uses the CNN from http://www.robots.ox.ac.uk/~vgg/research/very_deep/
 
 %% Add matcaffe to path
-addpath('/Users/martin/git/caffe/matlab')
+addpath('../caffe/matlab')
 
 %% Load images
 
@@ -27,7 +27,7 @@ end
 %% Load the CNN
 
 
-net = caffe.Net([model], [net_weights], 'test')
+net = caffe.Net([model], [weights], 'test')
 
 %% Preprocess image
 im_data = caffe.io.load_image('cat.jpg');
