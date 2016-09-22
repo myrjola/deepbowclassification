@@ -1,6 +1,10 @@
 %% Add matcaffe to path
 addpath('/Users/martin/git/caffe/matlab')
 
+%% Load images
+
+[trainingSet, testSet] = fetchCaltech101();
+
 %% Load the models
 net_weights = ['VGG_ILSVRC_16_layers.caffemodel']
 net_model = ['VGG_ILSVRC_16_layers_deploy.prototxt']
