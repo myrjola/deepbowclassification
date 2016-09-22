@@ -29,18 +29,6 @@ end
 
 net = caffe.Net([model], [weights], 'test')
 
-%% Preprocess image
-im_data = caffe.io.load_image('cat.jpg');
-IM_WIDTH = 224;
-IM_HEIGHT = 224;
-im_data = imresize(im_data, [IM_WIDTH, IM_HEIGHT]);
-
-%% So it seems that we need to repeat the image a couple of times
-im_data_repeated = repmat(im_data, [1 1 1 9]);
-im_data_repeated = cat(4, im_data_repeated, ones(224, 224, 3));
-whos im_data;
-whos im_data_repeated;
-
 %% Test the net
 trainingFeatures = activationVgg(net, trainingSet, 'fc8');
 
