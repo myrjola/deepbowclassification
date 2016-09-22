@@ -15,6 +15,7 @@ weights = 'VGG_ILSVRC_16_layers.caffemodel';
 modelURL = 'https://gist.githubusercontent.com/ksimonyan/211839e770f7b538e2d8/raw/0067c9b32f60362c74f4c445a080beed06b07eb3/VGG_ILSVRC_16_layers_deploy.prototxt';
 model = 'VGG_ILSVRC_16_layers_deploy.prototxt';
 
+
 % Fetch the model and weights if they don't already exist.
 for file_url = {weights weightsURL; model modelURL}'
     file = char(file_url(1))
@@ -26,6 +27,8 @@ end
 
 %% Load the CNN
 
+% GPU is much faster
+caffe.set_mode_gpu();
 
 net = caffe.Net([model], [weights], 'test')
 
