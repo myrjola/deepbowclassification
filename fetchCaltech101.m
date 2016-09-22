@@ -16,7 +16,7 @@ function [trainingSet, testSet] = fetchCaltech101()
     rootFolder = fullfile(outputFolder, '101_ObjectCategories');
     categories = {'airplanes', 'ferry', 'laptop'};
 
-    imds = imageDatastore(fullfile(rootFolder, categories), 'LabelSource', 'foldernames');
+    imds = imageDatastore(rootFolder, 'IncludeSubfolders', true, 'LabelSource', 'foldernames');
 
     tbl = countEachLabel(imds)
 
@@ -24,7 +24,7 @@ function [trainingSet, testSet] = fetchCaltech101()
 
     % Use splitEachLabel method to trim the set.
     % imds = splitEachLabel(imds, minSetCount, 'randomize');
-    imds = splitEachLabel(imds, 40, 'randomize');
+    imds = splitEachLabel(imds, minSetCount, 'randomize');
 
     % Notice that each set now has exactly the same number of images.
     countEachLabel(imds)

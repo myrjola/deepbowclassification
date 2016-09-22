@@ -49,6 +49,4 @@ confMat = confusionmat(testLabels, predictedLabels);
 % Convert confusion matrix into percentage form
 confMat = bsxfun(@rdivide,confMat,sum(confMat,2))
 
-%% Get weights and output
-weights = net.layers('fc8').params(1).get_data();
-output = net.blobs('fc8').get_data();
+mean(diag(confMat))
