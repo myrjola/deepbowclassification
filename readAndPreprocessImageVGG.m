@@ -1,5 +1,5 @@
+%% Image preprocessing for VGGNet.
 function Iout = readAndPreprocessImageVGG(filename)
-
     im_data = caffe.io.load_image(filename);
     IM_WIDTH = 224;
     IM_HEIGHT = 224;

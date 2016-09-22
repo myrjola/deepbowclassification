@@ -1,3 +1,4 @@
+%% Extract activations from the VGGNet
 function res = activationVgg(net, X, featureLayer)
     res = [];
     ten_images = [];

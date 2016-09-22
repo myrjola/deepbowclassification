@@ -1,6 +1,5 @@
 %% Based on the DeepLearningImageClassificationExample
 % http://se.mathworks.com/help/vision/examples/image-category-classification-using-deep-learning.html
-
 function [trainingSet, testSet] = fetchCaltech101()
     % Download the compressed data set from the following location
     url = 'http://www.vision.caltech.edu/Image_Datasets/Caltech101/101_ObjectCategories.tar.gz';
