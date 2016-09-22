@@ -28,7 +28,7 @@ end
 %% Load the CNN
 
 % GPU is much faster
-caffe.set_mode_gpu();
+% caffe.set_mode_gpu();
 
 net = caffe.Net([model], [weights], 'test')
 
