@@ -1,3 +1,6 @@
+%%
+% This script uses the CNN from http://www.robots.ox.ac.uk/~vgg/research/very_deep/
+
 %% Add matcaffe to path
 addpath('/Users/martin/git/caffe/matlab')
 
@@ -5,10 +8,26 @@ addpath('/Users/martin/git/caffe/matlab')
 
 [trainingSet, testSet] = fetchCaltech101();
 
-%% Load the models
-net_weights = ['VGG_ILSVRC_16_layers.caffemodel']
-net_model = ['VGG_ILSVRC_16_layers_deploy.prototxt']
-net = caffe.Net(net_model, net_weights, 'test')
+%% Fetch the CNN
+
+weightsURL = 'http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_16_layers.caffemodel';
+weights = 'VGG_ILSVRC_16_layers.caffemodel';
+modelURL = 'https://gist.githubusercontent.com/ksimonyan/211839e770f7b538e2d8/raw/0067c9b32f60362c74f4c445a080beed06b07eb3/VGG_ILSVRC_16_layers_deploy.prototxt';
+model = 'VGG_ILSVRC_16_layers_deploy.prototxt';
+
+% Fetch the model and weights if they don't already exist.
+for file_url = {weights weightsURL; model modelURL}'
+    file = char(file_url(1))
+    url = char(file_url(2))
+    if ~exist(file, 'file')
+        websave(file, url);
+    end
+end
+
+%% Load the CNN
+
+
+net = caffe.Net([model], [net_weights], 'test')
 
 %% Preprocess image
 im_data = caffe.io.load_image('cat.jpg');
