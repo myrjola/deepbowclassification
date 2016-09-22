@@ -24,12 +24,12 @@ function [trainingSet, testSet] = fetchCaltech101()
 
     % Use splitEachLabel method to trim the set.
     % imds = splitEachLabel(imds, minSetCount, 'randomize');
-    imds = splitEachLabel(imds, 10, 'randomize');
+    imds = splitEachLabel(imds, 40, 'randomize');
 
     % Notice that each set now has exactly the same number of images.
     countEachLabel(imds)
 
     imds.ReadFcn = @(filename)readAndPreprocessImageVGG(filename);
 
-    [trainingSet, testSet] = splitEachLabel(imds, 0.3, 'randomize');
+    [trainingSet, testSet] = splitEachLabel(imds, 0.25, 'randomize');
 end

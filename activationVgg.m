@@ -1,12 +1,17 @@
 function res = activationVgg(net, trainingSet, featureLayer)
     res = [];
+    ten_images = [];
     while hasdata(trainingSet)
-        im_data = read(trainingSet);
-        net.forward({im_data});
+        ten_images = cat(4, ten_images, read(trainingSet));
+
+        if size(ten_images, 4) ~= 10
+            continue;
+        end
+
+        net.forward({ten_images});
         features = net.blobs(featureLayer).get_data();
-        % We are only concerned about the first column as the columns are all identical.
-        features = features(:, 1);
         res = [res, features];
+        ten_images = [];
         whos res
     end
 end

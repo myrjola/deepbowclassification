@@ -23,9 +23,7 @@ whos im_data;
 whos im_data_repeated;
 
 %% Test the net
-res = net.forward({im_data_repeated});
-
-res = activationVgg(net, trainingSet, 'fc8');
+trainingFeatures = activationVgg(net, trainingSet, 'fc8');
 
 % Get training labels from the trainingSet
 trainingLabels = trainingSet.Labels;
@@ -33,7 +31,7 @@ trainingLabels = trainingSet.Labels;
 % Train multiclass SVM classifier using a fast linear solver, and set
 % 'ObservationsIn' to 'columns' to match the arrangement used for training
 % features.
-classifier = fitcecoc(res, trainingLabels, ...
+classifier = fitcecoc(trainingFeatures, trainingLabels, ...
     'Learners', 'Linear', 'Coding', 'onevsall', 'ObservationsIn', 'columns');
 
 testFeatures = activationVgg(net, testSet, 'fc8');

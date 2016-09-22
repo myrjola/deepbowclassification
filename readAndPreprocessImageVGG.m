@@ -9,6 +9,5 @@ function Iout = readAndPreprocessImageVGG(filename)
         % greyscale image doesn't have BGR channels.
         im_data = repmat(im_data, [1 1 3]);
     end
-    % Just repeats the image 10 times. This is pretty ineffective.
-    Iout = repmat(im_data, [1 1 1 10]);
+    Iout = im_data;
 end
