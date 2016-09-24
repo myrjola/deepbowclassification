@@ -27,7 +27,7 @@ end
 
 %% Load the CNN
 
-% GPU is much faster
+% GPU is much faster, but can be unstable
 % caffe.set_mode_gpu();
 
 net = caffe.Net([model], [weights], 'test')
@@ -60,3 +60,7 @@ confMat = confusionmat(testLabels, predictedLabels);
 confMat = bsxfun(@rdivide,confMat,sum(confMat,2))
 
 mean(diag(confMat))
+
+% Visualize the confusion matrix
+figure;
+montage(imresize(confMat, 10));
