@@ -7,6 +7,7 @@ run matlab/vl_compilenn
 
 %% setup MatConvNet
 run matlab/vl_setupnn
+
 cd ..
 
 %% download a pre-trained CNN from the web if it has not been downloaded before
