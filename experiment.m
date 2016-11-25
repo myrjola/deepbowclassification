@@ -1,6 +1,5 @@
 %% Download and compile MatConvNet
-untar(['http://www.vlfeat.org/matconvnet/download/' ...
-       'matconvnet-1.0-beta23.tar.gz ']) ;
+untar(['http://www.vlfeat.org/matconvnet/download/matconvnet-1.0-beta23.tar.gz']);
 cd matconvnet-1.0-beta23
 run matlab/vl_compilenn
 
@@ -20,8 +19,6 @@ end
 
 %% load the pre-trained CNN
 net = load('imagenet-vgg-f.mat') ;
-#+END_SRC
-
 
 % We want to test the CNN with the provided test image. First we need to
 % preprocess the image to fit it in the network, it needs to be resized and

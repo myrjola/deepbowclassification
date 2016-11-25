@@ -33,7 +33,11 @@ end
 net = caffe.Net([model], [weights], 'test')
 
 %% Test the net
-trainingFeatures = activationVgg(net, trainingSet, 'fc8');
+
+% The feature layer is usually the layer right before the classification layer
+featureLayer = 'fc7';
+
+trainingFeatures = activationVgg(net, trainingSet, featureLayer);
 
 % Get training labels from the trainingSet
 trainingLabels = trainingSet.Labels;
