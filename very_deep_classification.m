@@ -48,7 +48,7 @@ trainingLabels = trainingSet.Labels;
 classifier = fitcecoc(trainingFeatures, trainingLabels, ...
     'Learners', 'Linear', 'Coding', 'onevsall', 'ObservationsIn', 'columns');
 
-testFeatures = activationVgg(net, testSet, 'fc8');
+testFeatures = activationVgg(net, testSet, featureLayer);
 
 % Pass CNN image features to trained classifier, for some reason a transpose
 % was needed.
