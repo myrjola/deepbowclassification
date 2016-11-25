@@ -75,6 +75,7 @@ imds.ReadFcn = @(filename) imread(filename);
 %% Extract activations from the MatConvNet
 res = [];
 imds.reset;
+tic
 while hasdata(imds)
     im = read(imds);
     if size(im, 3) == 1
@@ -91,6 +92,7 @@ while hasdata(imds)
     % Simple progress bar
     whos res
 end
+toc
 
 classifications = arrayfun(@(i) net.meta.classes.description{i}, ...
                            res, ...
