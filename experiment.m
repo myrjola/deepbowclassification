@@ -64,7 +64,8 @@ if ~exist(outputFolder, 'dir') % download only once
 end
 
 rootFolder = fullfile(outputFolder, '101_ObjectCategories');
-categories = {'laptop', 'platypus', 'pizza', 'saxophone', 'soccer_ball'};
+categories = {'laptop', 'platypus', 'pizza', 'saxophone', 'soccer_ball', ...
+              'accordion', 'ant', 'beaver', 'binocular', 'cannon'};
 
 imds = imageDatastore(fullfile(rootFolder, categories), 'LabelSource', 'foldernames');
 imds.ReadFcn = @(filename) imread(filename);
@@ -115,7 +116,12 @@ categoriesCNN = {
     'platypus, duckbill, duckbilled platypus, duck-billed platypus, Ornithorhynchus anatinus',
     'pizza, pizza pie',
     'sax, saxophone',
-    'soccer ball'
+    'soccer ball',
+    'accordion, piano accordion, squeeze box',
+    'ant, emmet, pismire',
+    'beaver',
+    'binoculars, field glasses, opera glasses',
+    'cannon'
 }
 
 categoryMap = containers.Map(categories, categoriesCNN);
