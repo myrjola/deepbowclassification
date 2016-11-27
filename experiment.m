@@ -158,8 +158,8 @@ imagesc(confmat(1:5,:))
 colorbar('southoutside')
 xlabel('Possible classifications');
 ylabel('Test categories');
-% set(gca,'Yscale');
-set(gca,'YTickLabel', [' ';'laptop';' ';'platypus';' ';'pizza';' ';'saxophone';' ';'soccer ball'])
+set(gca,'ytick',[1 2 3 4 5])
+set(gca,'yticklabel',{'laptop','platypus','pizza','saxophone','soccer'})
 
 %%
 % What labels are the row and column indices corresponding to?
