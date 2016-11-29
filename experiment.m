@@ -1,13 +1,15 @@
 % %% Download and compile MatConvNet
 % untar(['http://www.vlfeat.org/matconvnet/download/matconvnet-1.0-beta23.tar.gz']);
-% cd matconvnet-1.0-beta23
-% run matlab/vl_compilenn
 
+if ~isa(@vl_simplenn, 'function_handle') % If matconvnet not initialized.
+    cd matconvnet-1.0-beta23
+    run matlab/vl_compilenn
 
-%% setup MatConvNet
-% run matlab/vl_setupnn
-% 
-% cd ..
+    %% setup MatConvNet
+    run matlab/vl_setupnn
+    %
+    cd ..
+end
 
 %% download a pre-trained CNN from the web if it has not been downloaded before
 % cnnurl = 'http://www.vlfeat.org/matconvnet/models/imagenet-vgg-f.mat'
